@@ -10,7 +10,7 @@ export class RodapeComponent implements OnInit {
   copyright: String;
 
   constructor() {
-    this.autoria = 'Desenvolvido por Marcos Vinicius Santos';
+    this.autoria = 'Desenvolvido por Marcos Vinicius';
     this.copyright = `@ ${new Date().getFullYear()} Copyright - RetroReview`;
   }
 
