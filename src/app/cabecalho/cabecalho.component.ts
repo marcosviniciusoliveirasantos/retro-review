@@ -30,4 +30,8 @@ export class CabecalhoComponent implements OnInit, AfterViewInit {
   sair(): void {
     this.usuarioLogado = false;
   }
+
+  acessarTemporario(): void {
+    this.usuarioLogado = true;
+  }
 }
