@@ -5,20 +5,38 @@
         <img class="meu-container" src=".\assets\resources\images\logo.png" />
         <a class="hide-on-med-and-down cor-padrao meu-logo"> RETRO REVIEW </a>
       </a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+      <a
+        href="#"
+        data-target="menu-mobile"
+        class="sidenav-trigger"
+        [hidden]="!this.usuarioLogado"
+      >
         <i class="material-icons">menu</i>
       </a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <ul
+        id="nav-mobile"
+        class="right hide-on-med-and-down"
+        [hidden]="!this.usuarioLogado"
+      >
         <li><a href="#" class="fonte-menu cor-padrao">Início</a></li>
         <li><a href="#" class="fonte-menu cor-padrao">Nova Review</a></li>
-        <li><a href="#" class="fonte-menu cor-padrao">Sair</a></li>
+        <li>
+          <a href="#" class="fonte-menu cor-padrao" (click)="this.sair()"
+            >Sair</a
+          >
+        </li>
       </ul>
     </div>
   </nav>
 </div>
 
-<ul class="sidenav black" id="mobile-demo" #mobile>
+<ul
+  class="sidenav black"
+  id="menu-mobile"
+  #mobile
+  [hidden]="!this.usuarioLogado"
+>
   <li><a href="#" class="cor-padrao">Início</a></li>
   <li><a href="#" class="cor-padrao">Nova Review</a></li>
-  <li><a href="#" class="cor-padrao">Sair</a></li>
+  <li><a href="#" class="cor-padrao" (click)="sair()">Sair</a></li>
 </ul>

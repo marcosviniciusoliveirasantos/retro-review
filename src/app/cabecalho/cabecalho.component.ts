@@ -15,12 +15,19 @@ import {
 })
 export class CabecalhoComponent implements OnInit, AfterViewInit {
   @ViewChild('mobile') sideNav?: ElementRef;
+  usuarioLogado: boolean;
 
-  constructor() {}
+  constructor() {
+    this.usuarioLogado = true;
+  }
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     M.Sidenav.init(this.sideNav?.nativeElement);
+  }
+
+  sair(): void {
+    this.usuarioLogado = false;
   }
 }
