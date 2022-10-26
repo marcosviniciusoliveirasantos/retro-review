@@ -2,11 +2,9 @@
 @import "~materialize-css/dist/css/materialize.css";
 @import "~material-icons/iconfont/material-icons.css";
 
-
 * {
   font-family: monospace;
 }
-
 
 .cor-padrao {
   color: greenyellow !important;
@@ -14,4 +12,40 @@
 
 .meu-container {
   height: 100px !important;
+}
+
+.meu-input {
+  border: 2px solid greenyellow !important;
+  color: greenyellow;
+  padding: 1px 20px !important;
+  font-family: monospace;
+  box-sizing: border-box !important;
+}
+
+.minha-label {
+  color: greenyellow;
+  font-size: 1.5rem;
+}
+
+.meu-botao {
+  background: transparent;
+  color: greenyellow;
+  border: 2px solid greenyellow;
+  width: 100%;
+  font-family: monospace;
+  font-size: 1.5rem;
+  padding: 8px;
+  margin: 35px 0px 20px 0px;
+}
+
+.meu-botao:hover,
+.meu-botao:focus {
+  opacity: 0.5;
+}
+
+/* desabilitar transição para style default do campo autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:focus-within {
+  transition: background-color 600000s 0s, color 600000s 0s !important;
 }
