@@ -1,0 +1,8 @@
+tr {
+  border-bottom: 1px solid greenyellow;
+}
+
+td, th {
+  padding: 15px;
+  overflow-wrap: anywhere;
+}
