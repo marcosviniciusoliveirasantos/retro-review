@@ -7,6 +7,7 @@ import { CabecalhoComponent } from './cabecalho/cabecalho.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { LoginComponent } from './login/login.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
+import { CadastroReviewComponent } from './cadastro-review/cadastro-review.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.co
     CabecalhoComponent,
     RodapeComponent,
     LoginComponent,
-    CadastroUsuarioComponent
+    CadastroUsuarioComponent,
+    CadastroReviewComponent
   ],
   imports: [
     BrowserModule,
