@@ -8,6 +8,8 @@ import { RodapeComponent } from './rodape/rodape.component';
 import { LoginComponent } from './login/login.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
 import { CadastroReviewComponent } from './cadastro-review/cadastro-review.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { TabelaReviewComponent } from './tabela-review/tabela-review.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { CadastroReviewComponent } from './cadastro-review/cadastro-review.compo
     RodapeComponent,
     LoginComponent,
     CadastroUsuarioComponent,
-    CadastroReviewComponent
+    CadastroReviewComponent,
+    InicioComponent,
+    TabelaReviewComponent
   ],
   imports: [
     BrowserModule,

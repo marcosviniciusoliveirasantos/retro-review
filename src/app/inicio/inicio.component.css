@@ -1,0 +1,12 @@
+.meu-botao-pesquisa {
+  height: 3rem;
+  background: transparent;
+  color: greenyellow;
+  border: 2px solid greenyellow;
+  padding: 10px;
+}
+
+.meu-botao-pesquisa:hover,
+.meu-botao-pesquisa:focus {
+  opacity: 0.5;
+}
