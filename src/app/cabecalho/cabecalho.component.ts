@@ -7,6 +7,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cabecalho',
@@ -17,7 +18,7 @@ export class CabecalhoComponent implements OnInit, AfterViewInit {
   @ViewChild('mobile') sideNav?: ElementRef;
   usuarioLogado: boolean;
 
-  constructor() {
+  constructor(private router: Router) {
     this.usuarioLogado = true;
   }
 
@@ -27,11 +28,9 @@ export class CabecalhoComponent implements OnInit, AfterViewInit {
     M.Sidenav.init(this.sideNav?.nativeElement);
   }
 
-  sair(): void {
-    this.usuarioLogado = false;
-  }
-
-  acessarTemporario(): void {
-    this.usuarioLogado = true;
+  abrirInicio(): void {
+    if (this.usuarioLogado) {
+      this.router.navigate(['/']);
+    }
   }
 }

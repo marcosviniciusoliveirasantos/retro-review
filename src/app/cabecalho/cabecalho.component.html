@@ -1,12 +1,11 @@
 <div class="navbar-fixed">
   <nav class="meu-container">
     <div class="nav-wrapper black">
-      <a href="#" class="brand-logo" (click)="this.acessarTemporario()">
+      <a (click)="this.abrirInicio()" class="brand-logo">
         <img class="meu-container" src=".\assets\resources\images\logo.png" />
         <a class="hide-on-med-and-down cor-padrao meu-logo"> RETRO REVIEW </a>
       </a>
       <a
-        href="#"
         data-target="menu-mobile"
         class="sidenav-trigger"
         [hidden]="!this.usuarioLogado"
@@ -18,12 +17,12 @@
         class="right hide-on-med-and-down"
         [hidden]="!this.usuarioLogado"
       >
-        <li><a href="#" class="fonte-menu cor-padrao">Início</a></li>
-        <li><a href="#" class="fonte-menu cor-padrao">Nova Review</a></li>
+        <li><a routerLink="/" class="fonte-menu cor-padrao">Início</a></li>
         <li>
-          <a href="#" class="fonte-menu cor-padrao" (click)="this.sair()"
-            >Sair</a
-          >
+          <a routerLink="/review" class="fonte-menu cor-padrao">Nova Review</a>
+        </li>
+        <li>
+          <a routerLink="/login" class="fonte-menu cor-padrao">Sair</a>
         </li>
       </ul>
     </div>
@@ -36,7 +35,9 @@
   #mobile
   [hidden]="!this.usuarioLogado"
 >
-  <li><a href="#" class="cor-padrao">Início</a></li>
-  <li><a href="#" class="cor-padrao">Nova Review</a></li>
-  <li><a href="#" class="cor-padrao" (click)="sair()">Sair</a></li>
+  <li><a routerLink="/" class="cor-padrao sidenav-close">Início</a></li>
+  <li>
+    <a routerLink="/review" class="cor-padrao sidenav-close">Nova Review</a>
+  </li>
+  <li><a routerLink="/login" class="cor-padrao sidenav-close">Sair</a></li>
 </ul>
