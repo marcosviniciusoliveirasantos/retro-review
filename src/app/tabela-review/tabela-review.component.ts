@@ -1,15 +1,17 @@
+import { Review, dadosTeste } from './../review';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tabela-review',
   templateUrl: './tabela-review.component.html',
-  styleUrls: ['./tabela-review.component.css']
+  styleUrls: ['./tabela-review.component.css'],
 })
 export class TabelaReviewComponent implements OnInit {
+  listaReviews: Review[];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    this.listaReviews = dadosTeste;
   }
 
+  ngOnInit(): void {}
 }

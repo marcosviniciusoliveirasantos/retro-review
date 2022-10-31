@@ -6,21 +6,13 @@
         <th style="width: 75%">REVIEW</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let review of listaReviews">
       <tr>
-        <td>Jogo 1</td>
+        <td>{{ review.jogo }}</td>
         <td>
-          <p>Autor: Pessoa 1</p>
-          <p>Nota: 10</p>
-          <p>Review: review da pessoa 1</p>
-        </td>
-      </tr>
-      <tr>
-        <td>Jogo 2</td>
-        <td>
-          <p>Autor: Pessoa 2</p>
-          <p>Nota: 10</p>
-          <p>Review: review da pessoa 2</p>
+          <p>Autor: {{ review.autor }}</p>
+          <p>Nota: {{ review.nota }}</p>
+          <p>Review: {{ review.analise }}</p>
         </td>
       </tr>
     </tbody>
