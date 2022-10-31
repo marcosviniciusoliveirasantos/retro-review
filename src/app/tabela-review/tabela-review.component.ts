@@ -1,5 +1,6 @@
 import { Review, dadosTeste } from './../review';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabela-review',
@@ -9,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class TabelaReviewComponent implements OnInit {
   listaReviews: Review[];
 
-  constructor() {
+  constructor(private router: Router) {
     this.listaReviews = dadosTeste;
   }
 
   ngOnInit(): void {}
+
+  acessarReview(id: number): void {
+    this.router.navigate(['/review'], { queryParams: { id: id } });
+  }
 }

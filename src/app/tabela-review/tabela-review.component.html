@@ -6,8 +6,12 @@
         <th style="width: 75%">REVIEW</th>
       </tr>
     </thead>
-    <tbody *ngFor="let review of listaReviews">
-      <tr>
+    <tbody>
+      <tr
+        *ngFor="let review of this.listaReviews"
+        (click)="this.acessarReview(review.id)"
+        class="destaque-row"
+      >
         <td>{{ review.jogo }}</td>
         <td>
           <p>Autor: {{ review.autor }}</p>

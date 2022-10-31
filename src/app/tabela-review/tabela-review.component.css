@@ -2,7 +2,13 @@ tr {
   border-bottom: 1px solid greenyellow;
 }
 
-td, th {
+td,
+th {
   padding: 15px;
   overflow-wrap: anywhere;
+}
+
+.destaque-row:hover {
+  background-color: black;
+  cursor: pointer;
 }
