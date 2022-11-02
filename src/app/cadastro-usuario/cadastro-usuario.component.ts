@@ -1,3 +1,4 @@
+import { UsuarioService } from './../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from '../usuario';
@@ -12,14 +13,14 @@ export class CadastroUsuarioComponent implements OnInit {
 
   confirmarSenhaAux: string = '';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private usuarioService: UsuarioService) {
     this.usuario = new Usuario();
   }
 
   ngOnInit(): void {}
 
   cadastrar(): void {
-    //logica para cadastro
+    this.usuarioService.salvar(this.usuario);
     this.router.navigate(['/login']);
   }
 }
