@@ -11,6 +11,8 @@ import { CadastroReviewComponent } from './cadastro-review/cadastro-review.compo
 import { InicioComponent } from './inicio/inicio.component';
 import { TabelaReviewComponent } from './tabela-review/tabela-review.component';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { TabelaReviewComponent } from './tabela-review/tabela-review.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
