@@ -1,3 +1,5 @@
+import { Usuario } from './../usuario';
+import { UsuarioService } from './../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,12 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router) {}
+  email: string = '';
+  senha: string = '';
+
+  exibirMensagem: boolean = false;
+
+  constructor(private router: Router, private usuarioService: UsuarioService) {}
 
   ngOnInit(): void {}
 
   realizarLogin(): void {
-    //logica para realizar login
-    this.router.navigate(['/']);
+    const usuario = this.usuarioService.obterUsuario(this.email, this.senha);
+    if (usuario) {
+      this.router.navigate(['/']);
+    } else {
+      this.exibirMensagem = true;
+    }
   }
 }

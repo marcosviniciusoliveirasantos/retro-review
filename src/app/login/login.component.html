@@ -1,16 +1,40 @@
 <div class="container">
-  <br />
+  <div class="espacamento-div"></div>
+
   <label for="user" class="minha-label">Usuário</label>
-  <input type="text" id="user" placeholder="Usuário" class="meu-input" />
+  <input
+    type="text"
+    id="email"
+    name="email"
+    placeholder="E-mail"
+    class="meu-input"
+    [(ngModel)]="this.email"
+  />
 
-  <br />
+  <div class="espacamento-div"></div>
+
   <label for="senha" class="minha-label">Senha</label>
-  <input type="password" id="senha" placeholder="Senha" class="meu-input" />
+  <input
+    type="password"
+    id="senha"
+    name="senha"
+    placeholder="Senha"
+    class="meu-input"
+    [(ngModel)]="this.senha"
+  />
 
-  <br />
+  <div *ngIf="this.exibirMensagem; else espaco" class="espacamento-div">
+    <label class="label-erro">Usuário não encontrado</label>
+  </div>
+  <ng-template #espaco>
+    <div class="espacamento-div"></div>
+  </ng-template>
+
   <button (click)="this.realizarLogin()" class="meu-botao">ACESSAR</button>
 
   <br />
   <label class="minha-label" style="font-size: 1rem">Novo Usuário? </label
-  ><a routerLink="/novo" style="font-size: 1rem">Clique aqui para se cadastrar</a>
+  ><a routerLink="/novo" style="font-size: 1rem"
+    >Clique aqui para se cadastrar</a
+  >
 </div>
