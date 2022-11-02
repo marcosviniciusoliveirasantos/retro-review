@@ -4,18 +4,28 @@
     <input
       type="text"
       id="pesquisar"
+      name="pesquisar"
       class="meu-input"
       placeholder="Pesquisar Jogo"
       style="width: 50% !important"
+      #campoPesquisa
     />
-    <button class="meu-botao-pesquisa">
+    <button
+      class="meu-botao-pesquisa"
+      (click)="this.buscar(campoPesquisa.value)"
+    >
       <i class="material-icons">search</i>
     </button>
   </div>
 
   <br />
-  <div><label class="minha-label">Resultados: 0</label></div>
+  <div>
+    <label class="minha-label">Resultados: {{ this.numeroResultados }}</label>
+  </div>
 
   <br />
-  <app-tabela-review></app-tabela-review>
+  <app-tabela-review
+    [valorBusca]="this.valorBusca"
+    (resultadosObtidos)="this.atualizarNumeroResultados($event)"
+  ></app-tabela-review>
 </div>
