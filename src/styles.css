@@ -41,6 +41,12 @@
 .meu-botao:hover,
 .meu-botao:focus {
   opacity: 0.5;
+  cursor: pointer;
+}
+
+.meu-botao:disabled {
+  opacity: 0.5;
+  cursor: default !important;
 }
 
 /* desabilitar transição para style default do campo autofill */
@@ -48,4 +54,13 @@ input:-webkit-autofill,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:focus-within {
   transition: background-color 600000s 0s, color 600000s 0s !important;
+}
+
+.espacamento-div {
+  height: 25px;
+}
+
+.label-erro {
+  font-size: 1rem;
+  color: red;
 }

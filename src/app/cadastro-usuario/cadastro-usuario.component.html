@@ -1,37 +1,95 @@
-<div class="container">
-  <br />
+<form class="container" #formulario="ngForm">
+  <div class="espacamento-div"></div>
+
   <label for="nome" class="minha-label">Nome</label>
   <input
     type="text"
     id="nome"
+    name="nome"
+    pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+\s?"
+    [(ngModel)]="this.usuario.nome"
     placeholder="Nome do Usuário"
     class="meu-input"
+    #nome="ngModel"
+    required
   />
+  <div
+    *ngIf="nome.errors && nome.touched; else espacoNome"
+    class="espacamento-div"
+  >
+    <label class="label-erro">Informe um nome válido</label>
+  </div>
+  <ng-template #espacoNome>
+    <div class="espacamento-div"></div>
+  </ng-template>
 
-  <br />
   <label for="email" class="minha-label">E-mail</label>
   <input
-    type="text"
+    type="email"
     id="email"
+    name="email"
+    [(ngModel)]="this.usuario.email"
+    pattern="^\w+@\w+\.\w{3}(\.\w{2})?"
     placeholder="E-mail do Usuário"
     class="meu-input"
+    #email="ngModel"
+    required
   />
+  <div
+    *ngIf="email.errors && email.touched; else espacoEmail"
+    class="espacamento-div"
+  >
+    <label class="label-erro">Informe um e-mail válido</label>
+  </div>
+  <ng-template #espacoEmail>
+    <div class="espacamento-div"></div>
+  </ng-template>
 
-  <br />
   <label for="senha" class="minha-label">Senha</label>
-  <input type="text" id="senha" placeholder="Senha" class="meu-input" />
+  <input
+    type="password"
+    id="senha"
+    name="senha"
+    [(ngModel)]="this.usuario.senha"
+    pattern="^\w{8}"
+    placeholder="Senha"
+    class="meu-input"
+    #senha="ngModel"
+    required
+  />
+  <div
+    *ngIf="senha.errors && senha.touched; else espacoSenha"
+    class="espacamento-div"
+  >
+    <label class="label-erro">Senha deve ter 8 caracteres sem espaço</label>
+  </div>
+  <ng-template #espacoSenha>
+    <div class="espacamento-div"></div>
+  </ng-template>
 
-  <br />
   <label for="confirmar-senha" class="minha-label">Confirmar Senha</label>
   <input
-    type="text"
+    type="password"
     id="confirmar-senha"
+    name="confirmar"
+    [(ngModel)]="this.confirmarSenhaAux"
+    pattern="{{ senha.value }}"
     placeholder="Confirmar a senha"
     class="meu-input"
+    #confirmar="ngModel"
+    required
   />
+  <div
+    *ngIf="confirmar.errors && confirmar.touched; else espacoConfirmar"
+    class="espacamento-div"
+  >
+    <label class="label-erro">A senha deve ser igual a digitada</label>
+  </div>
+  <ng-template #espacoConfirmar>
+    <div class="espacamento-div"></div>
+  </ng-template>
 
-  <br />
-  <button (click)="this.cadastrar()" class="meu-botao">
+  <button type="submit" class="meu-botao" [disabled]="!formulario.valid">
     REALIZAR CADASTRO
   </button>
-</div>
+</form>

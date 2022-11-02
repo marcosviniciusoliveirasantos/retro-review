@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from '../usuario';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -7,7 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./cadastro-usuario.component.css'],
 })
 export class CadastroUsuarioComponent implements OnInit {
-  constructor(private router: Router) {}
+  usuario: Usuario;
+
+  confirmarSenhaAux: string = '';
+
+  constructor(private router: Router) {
+    this.usuario = new Usuario();
+  }
 
   ngOnInit(): void {}
 
