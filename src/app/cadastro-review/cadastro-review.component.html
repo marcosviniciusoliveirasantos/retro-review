@@ -1,5 +1,6 @@
-<div class="container">
-  <br />
+<form class="container" #formulario="ngForm" (ngSubmit)="this.cadastrar()">
+  <div class="espacamento-div"></div>
+
   <label for="autor" class="minha-label">Autor</label>
   <input
     type="text"
@@ -9,8 +10,8 @@
     class="meu-input"
     readonly
   />
+  <div class="espacamento-div"></div>
 
-  <br />
   <label for="jogo" class="minha-label">Jogo</label>
   <input
     type="text"
@@ -19,9 +20,19 @@
     [(ngModel)]="this.review.jogo"
     placeholder="Nome do Jogo"
     class="meu-input"
+    #jogo="ngModel"
+    required
   />
+  <div
+    *ngIf="jogo.errors && jogo.touched; else espacoJogo"
+    class="espacamento-div"
+  >
+    <label class="label-erro">Informe um jogo válido</label>
+  </div>
+  <ng-template #espacoJogo>
+    <div class="espacamento-div"></div>
+  </ng-template>
 
-  <br />
   <label for="nota" class="minha-label">Nota</label>
   <input
     type="number"
@@ -30,9 +41,20 @@
     [(ngModel)]="this.review.nota"
     placeholder="0 - 10"
     class="meu-input"
+    pattern="^([0][0-9]|[0-9]|10)$"
+    #nota="ngModel"
+    required
   />
+  <div
+    *ngIf="nota.errors && nota.touched; else espacoNota"
+    class="espacamento-div"
+  >
+    <label class="label-erro">Informe uma nota de 0 a 10</label>
+  </div>
+  <ng-template #espacoNota>
+    <div class="espacamento-div"></div>
+  </ng-template>
 
-  <br />
   <label for="review" class="minha-label">Review</label>
   <textarea
     type="text"
@@ -41,12 +63,26 @@
     [(ngModel)]="this.review.analise"
     placeholder="Análise do Jogo"
     class="meu-input minha-textarea"
+    required
+    #textoanalise="ngModel"
   ></textarea>
-
-  <br />
-  <div style="display: flex">
-    <button class="meu-botao">SALVAR</button>
-    <button class="meu-botao">EXCLUIR</button>
-    <button class="meu-botao">VOLTAR</button>
+  <div
+    *ngIf="textoanalise.errors && textoanalise.touched; else espacoAnalise"
+    class="espacamento-div"
+  >
+    <label class="label-erro">Informe uma review para o Jopo</label>
   </div>
-</div>
+  <ng-template #espacoAnalise>
+    <div class="espacamento-div"></div>
+  </ng-template>
+
+  <div style="display: flex">
+    <button type="submit" class="meu-botao" [disabled]="!formulario.valid">
+      SALVAR
+    </button>
+    <button type="button" class="meu-botao">EXCLUIR</button>
+    <button type="button" class="meu-botao" (click)="this.voltar()">
+      VOLTAR
+    </button>
+  </div>
+</form>

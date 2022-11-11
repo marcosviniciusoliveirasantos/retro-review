@@ -29,4 +29,13 @@ export class CadastroReviewComponent implements OnInit {
       }
     }
   }
+
+  cadastrar(): void {
+    //cadastra
+    this.voltar();
+  }
+
+  voltar(): void {
+    this.router.navigate(['/']);
+  }
 }
