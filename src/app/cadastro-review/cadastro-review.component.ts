@@ -38,6 +38,11 @@ export class CadastroReviewComponent implements OnInit {
     this.voltar();
   }
 
+  excluir(): void {
+    this.reviewService.excluir(this.review);
+    this.voltar();
+  }
+
   voltar(): void {
     this.router.navigate(['/']);
   }

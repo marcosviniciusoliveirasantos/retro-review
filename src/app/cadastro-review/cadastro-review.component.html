@@ -80,7 +80,14 @@
     <button type="submit" class="meu-botao" [disabled]="!formulario.valid">
       SALVAR
     </button>
-    <button type="button" class="meu-botao">EXCLUIR</button>
+    <button
+      type="button"
+      class="meu-botao"
+      *ngIf="this.review.id"
+      (click)="this.excluir()"
+    >
+      EXCLUIR
+    </button>
     <button type="button" class="meu-botao" (click)="this.voltar()">
       VOLTAR
     </button>
