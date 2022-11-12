@@ -1,6 +1,7 @@
 import { Review, dadosTeste } from './../review';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ReviewService } from '../services/review.service';
 
 @Component({
   selector: 'app-cadastro-review',
@@ -10,7 +11,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CadastroReviewComponent implements OnInit {
   review: Review;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private reviewService: ReviewService
+  ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
@@ -21,17 +26,15 @@ export class CadastroReviewComponent implements OnInit {
     const parametro = this.route.snapshot.queryParamMap.get('id');
     if (parametro) {
       const id = +parametro;
-      const busca = dadosTeste.find((r) => {
-        return r.id === id;
-      });
+      const busca = this.reviewService.obterReview(id);
       if (busca) {
         this.review = busca;
       }
     }
   }
 
-  cadastrar(): void {
-    //cadastra
+  salvar(): void {
+    this.reviewService.salvar(this.review);
     this.voltar();
   }
 

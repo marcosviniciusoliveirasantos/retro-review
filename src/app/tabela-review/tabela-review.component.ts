@@ -9,6 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { ReviewService } from '../services/review.service';
 
 @Component({
   selector: 'app-tabela-review',
@@ -20,15 +21,17 @@ export class TabelaReviewComponent implements OnInit, OnChanges {
   @Output() resultadosObtidos = new EventEmitter<number>();
   listaReviews: Review[];
 
-  constructor(private router: Router) {
-    this.listaReviews = dadosTeste;
+  constructor(private router: Router, private reviewService: ReviewService) {
+    this.listaReviews = reviewService.obterListaReview();
     this.enviarNumeroResultados();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.listaReviews = dadosTeste.filter((r) =>
-      r.jogo.toLocaleLowerCase().includes(this.valorBusca.toLocaleLowerCase())
-    );
+    this.listaReviews = this.reviewService
+      .obterListaReview()
+      .filter((r) =>
+        r.jogo.toLocaleLowerCase().includes(this.valorBusca.toLocaleLowerCase())
+      );
     this.enviarNumeroResultados();
   }
 
