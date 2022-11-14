@@ -1,7 +1,6 @@
-import { Usuario } from './../usuario';
-import { UsuarioService } from './../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +13,17 @@ export class LoginComponent implements OnInit {
 
   exibirMensagem: boolean = false;
 
-  constructor(private router: Router, private usuarioService: UsuarioService) {}
+  constructor(private router: Router, private loginService: LoginService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const usuario = this.loginService.obterUsuarioLogado();
+    if (usuario) {
+      this.router.navigate(['/']);
+    }
+  }
 
   realizarLogin(): void {
-    const usuario = this.usuarioService.obterUsuario(this.email, this.senha);
-    if (usuario) {
+    if (this.loginService.realizarLogin(this.email, this.senha)) {
       this.router.navigate(['/']);
     } else {
       this.exibirMensagem = true;

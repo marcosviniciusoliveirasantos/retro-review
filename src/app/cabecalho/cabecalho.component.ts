@@ -1,3 +1,4 @@
+import { LoginService } from './../services/login.service';
 import * as M from 'materialize-css';
 
 import {
@@ -18,7 +19,7 @@ export class CabecalhoComponent implements OnInit, AfterViewInit {
   @ViewChild('mobile') sideNav?: ElementRef;
   usuarioLogado: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private loginService: LoginService) {
     this.usuarioLogado = true;
   }
 
@@ -29,8 +30,11 @@ export class CabecalhoComponent implements OnInit, AfterViewInit {
   }
 
   abrirInicio(): void {
-    if (this.usuarioLogado) {
-      this.router.navigate(['/']);
-    }
+    this.router.navigate(['/']);
+  }
+
+  sair() {
+    this.loginService.realizarLogout();
+    this.router.navigate(['/login']);
   }
 }

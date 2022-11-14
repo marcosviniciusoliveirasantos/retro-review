@@ -26,7 +26,7 @@
           <a routerLink="/review" class="fonte-menu cor-padrao">Nova Review</a>
         </li>
         <li>
-          <a routerLink="/login" class="fonte-menu cor-padrao">Sair</a>
+          <a (click)="this.sair()" class="fonte-menu cor-padrao">Sair</a>
         </li>
       </ul>
     </div>
@@ -43,5 +43,5 @@
   <li>
     <a routerLink="/review" class="cor-padrao sidenav-close">Nova Review</a>
   </li>
-  <li><a routerLink="/login" class="cor-padrao sidenav-close">Sair</a></li>
+  <li><a (click)="this.sair()" class="cor-padrao sidenav-close" >Sair</a></li>
 </ul>

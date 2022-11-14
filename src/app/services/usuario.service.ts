@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class UsuarioService {
   private usuarios: Usuario[] = [];
-  private readonly tabela: string = 'USUARIO';
+  private readonly tabela: string = 'USUARIOS_CADASTRADOS';
 
   constructor() {
     this.atualizarListaUsuarios();
