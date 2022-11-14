@@ -77,13 +77,18 @@
   </ng-template>
 
   <div style="display: flex">
-    <button type="submit" class="meu-botao" [disabled]="!formulario.valid">
+    <button
+      type="submit"
+      class="meu-botao"
+      [disabled]="!formulario.valid"
+      *ngIf="this.podeAlterar"
+    >
       SALVAR
     </button>
     <button
       type="button"
       class="meu-botao"
-      *ngIf="this.review.id"
+      *ngIf="this.review.id && this.podeAlterar"
       (click)="this.excluir()"
     >
       EXCLUIR
