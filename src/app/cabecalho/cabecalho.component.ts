@@ -9,6 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cabecalho',
@@ -18,9 +19,13 @@ import { Router } from '@angular/router';
 export class CabecalhoComponent implements OnInit, AfterViewInit {
   @ViewChild('mobile') sideNav?: ElementRef;
   usuarioLogado: boolean;
+  inscricao: Subscription;
 
   constructor(private router: Router, private loginService: LoginService) {
-    this.usuarioLogado = true;
+    this.inscricao = loginService
+      .getEmissor()
+      .subscribe((valor) => (this.usuarioLogado = valor));
+    this.usuarioLogado = loginService.obterUsuarioLogado() != undefined;
   }
 
   ngOnInit(): void {}
@@ -30,7 +35,9 @@ export class CabecalhoComponent implements OnInit, AfterViewInit {
   }
 
   abrirInicio(): void {
-    this.router.navigate(['/']);
+    if (this.usuarioLogado) {
+      this.router.navigate(['/']);
+    }
   }
 
   sair() {
