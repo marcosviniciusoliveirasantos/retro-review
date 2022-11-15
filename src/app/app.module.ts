@@ -13,6 +13,7 @@ import { TabelaReviewComponent } from './tabela-review/tabela-review.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NotaPipe } from './pipes/nota.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     CadastroReviewComponent,
     InicioComponent,
     TabelaReviewComponent,
+    NotaPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
