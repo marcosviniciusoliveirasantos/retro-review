@@ -14,8 +14,16 @@ export class UsuarioService {
 
   salvar(usuario: Usuario): void {
     this.atualizarListaUsuarios();
+    usuario.id = this.gerarId();
     this.usuarios.push(usuario);
     localStorage.setItem(this.tabela, JSON.stringify(this.usuarios));
+  }
+
+  private gerarId(): number {
+    if (this.usuarios.length == 0) {
+      return 1;
+    }
+    return Math.max(...this.usuarios.map((u) => u.id)) + 1;
   }
 
   obterUsuario(email: string, senha: string) {

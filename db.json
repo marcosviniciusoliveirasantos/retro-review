@@ -28,5 +28,25 @@
       "analise": "Review do Outro Jogo pelo Marcos Vinicius cadastrado por http request",
       "autor": "Marcos Vinicius"
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "nome": "Lucas Akio",
+      "email": "lucas@hotmail.com",
+      "senha": "12345678"
+    },
+    {
+      "id": 2,
+      "nome": "Luis Gustavo",
+      "email": "luis@hotmail.com",
+      "senha": "12345678"
+    },
+    {
+      "id": 3,
+      "nome": "Marcos Vinicius",
+      "email": "mvosantos1@hotmail.com",
+      "senha": "12345678"
+    }
   ]
 }

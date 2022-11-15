@@ -1,4 +1,4 @@
-import { Review, dadosTeste } from './../review';
+import { Review } from './../review';
 import {
   Component,
   EventEmitter,

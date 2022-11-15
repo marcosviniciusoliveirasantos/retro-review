@@ -1,5 +1,5 @@
 import { LoginService } from './../services/login.service';
-import { Review, dadosTeste } from './../review';
+import { Review } from './../review';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewService } from '../services/review.service';
