@@ -23,7 +23,7 @@
     },
     {
       "id": 4,
-      "jogo": "Outro Jogo",
+      "jogo": "Outro Jogo cadastrado",
       "nota": "7",
       "analise": "Review do Outro Jogo pelo Marcos Vinicius cadastrado por http request",
       "autor": "Marcos Vinicius"

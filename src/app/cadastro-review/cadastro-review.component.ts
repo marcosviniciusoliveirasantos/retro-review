@@ -3,6 +3,7 @@ import { Review } from './../review';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewService } from '../services/review.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro-review',
@@ -10,8 +11,9 @@ import { ReviewService } from '../services/review.service';
   styleUrls: ['./cadastro-review.component.css'],
 })
 export class CadastroReviewComponent implements OnInit {
-  review!: Review;
+  review: Review = new Review(' - ');
   podeAlterar: boolean = false;
+  usuarioLogado!: string;
 
   constructor(
     private router: Router,
@@ -25,23 +27,31 @@ export class CadastroReviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const usuarioLogado = this.loginService.obterUsuarioLogado();
-    this.carregarReview(usuarioLogado!);
-    this.podeAlterar = this.review.autor == usuarioLogado;
+    this.usuarioLogado = this.loginService.obterUsuarioLogado()!;
+    this.carregarReview(this.usuarioLogado);
   }
 
   private carregarReview(autor: string) {
     const parametro = this.route.snapshot.queryParamMap.get('id');
     if (parametro) {
       const id = +parametro;
-      const busca = this.reviewService.obterReview(id);
-      if (busca) {
-        this.review = busca;
-      } else {
-        this.criarNovaReview(autor);
-      }
+      this.reviewService
+        .obterReview(id)
+        .subscribe(
+          (review) => {
+            this.review = review;
+          },
+          (erro) => {
+            console.log(erro);
+            this.criarNovaReview(autor);
+          }
+        )
+        .add(() => {
+          this.podeAlterar = this.review.autor == this.usuarioLogado;
+        });
     } else {
       this.criarNovaReview(autor);
+      this.podeAlterar = this.review.autor == this.usuarioLogado;
     }
   }
 
@@ -50,13 +60,17 @@ export class CadastroReviewComponent implements OnInit {
   }
 
   salvar(): void {
-    this.reviewService.salvar(this.review);
-    this.voltar();
+    this.reviewService
+      .salvar(this.review)
+      .subscribe()
+      .add(() => this.voltar());
   }
 
   excluir(): void {
-    this.reviewService.excluir(this.review);
-    this.voltar();
+    this.reviewService
+      .excluir(this.review.id)
+      .subscribe()
+      .add(() => this.voltar());
   }
 
   voltar(): void {
