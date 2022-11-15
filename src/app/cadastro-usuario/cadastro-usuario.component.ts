@@ -29,8 +29,8 @@ export class CadastroUsuarioComponent implements OnInit {
     }
   }
 
-  cadastrar(): void {
-    this.usuarioService.salvar(this.usuario);
+  async cadastrar(): Promise<void> {
+    await (this.usuarioService.salvar(this.usuario));
     this.router.navigate(['/login']);
   }
 }

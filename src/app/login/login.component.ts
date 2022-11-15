@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  realizarLogin(): void {
-    if (this.loginService.realizarLogin(this.email, this.senha)) {
+  async realizarLogin(): Promise<void> {
+    if (await this.loginService.realizarLogin(this.email, this.senha)) {
       this.router.navigate(['/']);
     } else {
       this.exibirMensagem = true;

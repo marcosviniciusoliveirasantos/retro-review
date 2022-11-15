@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { Usuario } from '../usuario';
 import { UsuarioService } from './usuario.service';
 
 @Injectable({
@@ -19,17 +20,23 @@ export class LoginService {
     return undefined;
   }
 
-  public realizarLogin(email: string, senha: string): boolean {
-    const usuario = this.usuarioService.obterUsuario(email, senha);
-    if (usuario) {
-      localStorage.setItem(this.tabela, usuario.nome);
-      this.emissor.next(true);
-      return true;
-    }
-
-    localStorage.setItem(this.tabela, '');
-    this.emissor.next(false);
-    return false;
+  public realizarLogin(email: string, senha: string): Promise<boolean> {
+    return this.usuarioService
+      .obterUsuario(email, senha)
+      .then((usuario: Usuario | undefined) => {
+        if (!usuario) {
+          throw new Error();
+        }
+        localStorage.setItem(this.tabela, usuario.nome);
+        this.emissor.next(true);
+        return true;
+      })
+      .catch(() => {
+        console.log('Usuario não encontrando');
+        localStorage.setItem(this.tabela, '');
+        this.emissor.next(false);
+        return false;
+      });
   }
 
   public realizarLogout() {

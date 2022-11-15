@@ -12,6 +12,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { TabelaReviewComponent } from './tabela-review/tabela-review.component';
 
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,14 +23,10 @@ import { FormsModule } from '@angular/forms';
     CadastroUsuarioComponent,
     CadastroReviewComponent,
     InicioComponent,
-    TabelaReviewComponent
+    TabelaReviewComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

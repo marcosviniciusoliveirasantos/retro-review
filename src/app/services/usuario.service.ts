@@ -1,44 +1,37 @@
 import { Usuario } from './../usuario';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsuarioService {
-  private usuarios: Usuario[] = [];
-  private readonly tabela: string = 'USUARIOS_CADASTRADOS';
+  private readonly url: string = 'http://localhost:3000/users';
+  private readonly options = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
-  constructor() {
-    this.atualizarListaUsuarios();
+  constructor(private httpClient: HttpClient) {}
+
+  salvar(usuario: Usuario) {
+    return this.httpClient
+      .post<Usuario>(this.url, JSON.stringify(usuario), this.options)
+      .toPromise() as Promise<Usuario>;
   }
 
-  salvar(usuario: Usuario): void {
-    this.atualizarListaUsuarios();
-    usuario.id = this.gerarId();
-    this.usuarios.push(usuario);
-    localStorage.setItem(this.tabela, JSON.stringify(this.usuarios));
-  }
-
-  private gerarId(): number {
-    if (this.usuarios.length == 0) {
-      return 1;
-    }
-    return Math.max(...this.usuarios.map((u) => u.id)) + 1;
-  }
-
-  obterUsuario(email: string, senha: string) {
-    this.atualizarListaUsuarios();
-    return this.usuarios.find((u) => {
-      return u.email == email && u.senha == senha;
-    });
-  }
-
-  private atualizarListaUsuarios(): void {
-    const listaAtualizada: Usuario[] = JSON.parse(
-      localStorage.getItem(this.tabela)!
+  obterUsuario(email: string, senha: string): Promise<Usuario | undefined> {
+    return this.getListaUsuarios().then<Usuario | undefined>(
+      (resultado: Usuario[]) => {
+        return resultado.find((u) => {
+          return u.email == email && u.senha == senha;
+        });
+      }
     );
-    if (listaAtualizada) {
-      this.usuarios = listaAtualizada;
-    }
+  }
+
+  private getListaUsuarios(): Promise<Usuario[]> {
+    return this.httpClient.get<Usuario[]>(this.url).toPromise() as Promise<
+      Usuario[]
+    >;
   }
 }
