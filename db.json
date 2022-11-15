@@ -1,0 +1,32 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "jogo": "Jogo 1",
+      "nota": "10",
+      "analise": "Review do Jogo 1 pelo Lucas Akio",
+      "autor": "Lucas Akio"
+    },
+    {
+      "id": 2,
+      "jogo": "Jogo 2",
+      "nota": "8",
+      "analise": "Review do Jogo 2 pelo Luis Gustavo",
+      "autor": "Luis Gustavo"
+    },
+    {
+      "id": 3,
+      "jogo": "Jogo 3",
+      "nota": "4",
+      "analise": "Review do Jogo 3 pelo Marcos Vinicius",
+      "autor": "Marcos Vinicius"
+    },
+    {
+      "id": 4,
+      "jogo": "Outro Jogo",
+      "nota": "7",
+      "analise": "Review do Outro Jogo pelo Marcos Vinicius cadastrado por http request",
+      "autor": "Marcos Vinicius"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "/analises": "/reviews",
+  "/analises/:id": "/reviews/:id"
+}
