@@ -31,4 +31,4 @@ https://www.figma.com/file/WUh9eNzJoXoBodjrHSjLgh/Prot%C3%B3tipo-Retro-Review?no
 - [x] Apresentar uma lista de dados com a diretiva estrutural ngFor.
 - [x] Usar a diretiva ngIf
 - [x] Formatar a apresentação de dados com Pipes.
-- [ ] Build e deploy da aplicação.
+- [x] Build e deploy da aplicação.
