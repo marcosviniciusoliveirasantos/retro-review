@@ -4,9 +4,11 @@ Projeto referente a disciplina Frameworks Web do curso "XXIII Curso de Especiali
 
 A aplicação web "Retro Review" é um sistema que possibilita que o seu usuário verifique uma lista de jogos e suas respectivas reviews, com a opção de incluir novas reviews, além de possibilitar a exclusão e/ou alterações de reviews já cadastradas no sistema.
 
+Atenção: Para acessar a aplicação no GitHub Pages deve ser iniciado o json-server localmente.
+
 # Endereço de Deploy - GitHub Pages
 
-TO DO
+https://marcosviniciusoliveirasantos.github.io/retro-review/
 
 # Protótipo
 
